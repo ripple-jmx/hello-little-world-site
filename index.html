@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="一个简单的小网站，向世界打个招呼。">
+<meta name="theme-color" content="#f7f5ef">
+<title>你好，世界 · 一个小小的网站</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f7f5ef;color:#263a32;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100svh;display:flex;flex-direction:column}header,footer{display:flex;justify-content:space-between;align-items:center;padding:28px 7vw;font-size:13px}header{letter-spacing:.08em}.brand{font-weight:700}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#6b8a56;margin-right:9px}main{flex:1;display:grid;place-content:center;text-align:center;padding:64px 24px}.sun{width:72px;height:72px;background:#efb85b;border-radius:50%;margin:0 auto 42px;box-shadow:0 0 0 14px #efb85b1c}.eyebrow{font-size:12px;letter-spacing:.18em;color:#68756a}h1{font-size:clamp(48px,9vw,96px);font-weight:600;letter-spacing:-.06em;line-height:1.2;margin:20px 0 24px}p{color:#69736b;line-height:1.9;margin:0;font-size:16px}button{justify-self:center;margin-top:36px;background:#263a32;color:white;border:0;padding:15px 25px;border-radius:100px;font:inherit;cursor:pointer;transition:background .2s,transform .2s}button:hover{background:#405c4d;transform:translateY(-2px)}button:focus-visible{outline:3px solid #c78d30;outline-offset:5px}#greeting{min-height:30px;margin-top:20px;font-size:14px}footer{color:#758074;border-top:1px solid #e1e4d9;margin:0 7vw;padding:22px 0;font-size:12px}@media(max-width:480px){header{padding:24px}footer{margin:0 24px}main{padding:48px 20px}.sun{width:60px;height:60px}}
+</style>
+</head>
+<body>
+<header><span class="brand"><span class="dot"></span>一个小站</span><span>JUST SAY HELLO</span></header>
+<main>
+<div class="sun" aria-hidden="true"></div>
+<div class="eyebrow">A SMALL CORNER OF THE INTERNET</div>
+<h1>你好，世界。</h1>
+<p>很高兴在这里遇见你。<br>愿你的今天，有一点小小的美好。</p>
+<button type="button" id="hello">打个招呼 <span aria-hidden="true">↗</span></button>
+<p id="greeting" role="status" aria-live="polite"></p>
+</main>
+<footer><span>简单一点，也很好。</span><span>Made with a little sunshine ☀</span></footer>
+<script>
+if (location.pathname.endsWith('/')) {
+  history.replaceState(null, '', location.pathname + 'index.html' + location.search + location.hash);
+}
+
+const greetings = ['你好呀！祝你今天心情愉快 ☀', '世界很大，很高兴与你相遇。', '送你一份好心情，记得查收。'];
+let count = 0;
+document.getElementById('hello').addEventListener('click', () => {
+ document.getElementById('greeting').textContent = greetings[count % greetings.length];
+ count += 1;
+});
+</script>
+</body>
+</html>
